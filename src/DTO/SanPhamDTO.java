@@ -19,6 +19,7 @@ public class SanPhamDTO {
     private Blob image;
     private String price;
     private int deleted;
+    private int qty;
 
     public SanPhamDTO() {
     }
@@ -31,6 +32,17 @@ public class SanPhamDTO {
         this.image = image;
         this.price = price;
         this.deleted = deleted;
+    }
+
+    public SanPhamDTO(int id, String name, String category, String description, Blob image, String price, int deleted, int qty) {
+        this.id = id;
+        this.name = name;
+        this.category = category;
+        this.description = description;
+        this.image = image;
+        this.price = price;
+        this.deleted = deleted;
+        this.qty = qty;
     }
 
     public SanPhamDTO(int id, String name, String category, String description, Blob image, int deleted) {
@@ -65,6 +77,14 @@ public class SanPhamDTO {
 
     public int getId() {
         return id;
+    }
+
+    public int getQty() {
+        return qty;
+    }
+
+    public void setQty(int qty) {
+        this.qty = qty;
     }
 
     public void setId(int id) {

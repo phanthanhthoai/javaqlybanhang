@@ -13,7 +13,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-
 /**
  *
  * @author Admin
@@ -40,7 +39,10 @@ public class SanPhamDAO {
                         rs.getString("category"),
                         rs.getString("description"),
                         (Blob) rs.getBlob("image"),
-                        rs.getInt("deleted"));
+                        rs.getString("price"),
+                        rs.getInt("deleted"),
+                        rs.getInt("qty")
+                );
                 listSp.add(sp);
             }
             return listSp;
@@ -72,6 +74,30 @@ public class SanPhamDAO {
         }
         return sp;
     }
+    public SanPhamDTO laytheoSpIdcapnhat(int id) {
+        SanPhamDTO sp = new SanPhamDTO();
+        try {
+            Connection conn = connectDB.getConnection();
+            String sql = "select * from product where idproduct=?";
+            PreparedStatement pre = conn.prepareStatement(sql);
+            pre.setInt(1, id);
+            ResultSet rs = pre.executeQuery();
+            if (rs.next()) {
+                sp = new SanPhamDTO(
+                        rs.getInt("idproduct"),
+                        rs.getString("nameProduct"),
+                        rs.getString("category"),
+                        rs.getString("description"),
+                        (Blob) rs.getBlob("image"),
+                        rs.getString("price"),
+                        rs.getInt("deleted"),
+                        rs.getInt("qty"));
+            }
+        } catch (Exception e) {
+            System.out.print(e);
+        }
+        return sp;
+    }
 
     public boolean themSp(SanPhamDTO sp, InputStream hinhanh) {
         boolean kq = false;
@@ -83,7 +109,26 @@ public class SanPhamDAO {
             pre.setString(2, sp.getCategory());
             pre.setString(3, sp.getDescription());
             pre.setBlob(4, hinhanh);
-            kq = pre.executeUpdate()>0;
+            kq = pre.executeUpdate() > 0;
+        } catch (Exception e) {
+            System.out.println("Message: " + e.getMessage());
+        }
+        return kq;
+    }
+
+    public boolean capnhat(int id, int qty, String price) {
+        boolean kq = false;
+        try {
+            Connection conn = connectDB.getConnection();
+            String sql = "";
+
+            sql = "update product set qty=?, price=? where idproduct=?";
+            PreparedStatement pre = conn.prepareStatement(sql);
+            pre.setInt(1, qty);
+            pre.setString(2, price);
+            pre.setInt(3, id);
+
+            kq = pre.executeUpdate() > 0;
         } catch (Exception e) {
             System.out.println("Message: " + e.getMessage());
         }
@@ -113,21 +158,24 @@ public class SanPhamDAO {
                 pre.setString(3, sp.getDescription());
                 pre.setInt(4, sp.getId());
             }
-            kq = pre.executeUpdate()>0;
+            kq = pre.executeUpdate() > 0;
         } catch (Exception e) {
             System.out.println("Message: " + e.getMessage());
         }
         return kq;
     }
 
-    public boolean xoaSp(int id,int del) {
+    public boolean xoaSp(int id, int del) {
         boolean kq = false;
         try {
             Connection conn = connectDB.getConnection();
             String sql = "UPDATE product SET deleted=? where idproduct=?";
             PreparedStatement pre = conn.prepareStatement(sql);
-            if(del==0) pre.setInt(1, 1);
-            else pre.setInt(1, 0);
+            if (del == 0) {
+                pre.setInt(1, 1);
+            } else {
+                pre.setInt(1, 0);
+            }
             pre.setInt(2, id);
             kq = pre.executeUpdate() > 0;
         } catch (Exception e) {

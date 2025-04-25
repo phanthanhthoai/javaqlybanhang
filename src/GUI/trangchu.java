@@ -7,11 +7,12 @@ package GUI;
 import BUS.BillBUS;
 import BUS.BillDetailsBUS;
 import BUS.ChiTietPhieuNhapBUS;
-import BUS.SanPhamBUS;
+import BUS.DiscountBUS;
 import DAO.ChiTietPhieuNhapDAO;
 import DAO.SanPhamDAO;
 import DTO.BillDTO;
 import DTO.ChiTietPhieuNhapDTO;
+import DTO.DiscountDTO;
 import DTO.NhanVienDTO;
 import DTO.SanPhamDTO;
 import com.mysql.cj.jdbc.Blob;
@@ -19,39 +20,27 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
-import java.awt.Insets;
-import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.JPanel;
-import GUI.loggedIn;
 import Util.InvoicePDF;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.DecimalFormat;
-import java.util.Date;
 import javax.swing.table.DefaultTableModel;
-import java.awt.*;
+import static org.apache.commons.math3.fitting.leastsquares.LeastSquaresFactory.model;
 
 /**
  *
  * @author Admin
  */
-
 public class trangchu extends javax.swing.JPanel {
 
     /**
@@ -63,6 +52,7 @@ public class trangchu extends javax.swing.JPanel {
         cacChucNang();
     }
     ArrayList<ChiTietPhieuNhapDTO> ctpn = null;
+    ArrayList<SanPhamDTO> dssp = null;
     ChiTietPhieuNhapDAO ctpnDAO = new ChiTietPhieuNhapDAO();
     SanPhamDAO spDAO = new SanPhamDAO();
     BillBUS billBUS = new BillBUS();
@@ -105,8 +95,8 @@ public class trangchu extends javax.swing.JPanel {
                 );
                 if (confirm == JOptionPane.YES_OPTION) {
                     // Dừng chỉnh sửa nếu đang có ô được chỉnh sửa  
-                     jtbCthd.removeAll();
-                     khoiTao();
+                    jtbCthd.removeAll();
+                    khoiTao();
                 }
             }
         });
@@ -147,7 +137,7 @@ public class trangchu extends javax.swing.JPanel {
 
     private void capNhatSoThuTu(DefaultTableModel model) {
         for (int i = 0; i < model.getRowCount(); i++) {
-            model.setValueAt(i + 1, i, 0); // Cập nhật lại cột STT (giả sử STT nằm ở cột 0)
+            model.setValueAt(i + 1, i, 0); 
         }
     }
 
@@ -157,7 +147,7 @@ public class trangchu extends javax.swing.JPanel {
         model.setRowCount(0);
         NhanVienDTO nvDTO = loggedIn.getCurrentUser();
         if (nvDTO == null) {
-            System.out.println("⚠️ Lỗi: Người dùng chưa đăng nhập!");
+            System.out.println("Lỗi: Người dùng chưa đăng nhập!");
             txtNguoitao.setText("Không xác định");
             return;
         }
@@ -179,7 +169,7 @@ public class trangchu extends javax.swing.JPanel {
         modelHoaDon = new DefaultTableModel(columnNames, 0);
         jtbCthd.setModel(modelHoaDon);
         cauhinh("");
-        
+
     }
 
     private DefaultTableModel modelHoaDon;
@@ -218,15 +208,17 @@ public class trangchu extends javax.swing.JPanel {
     private void loadProducts(String search) {
         jpnDssp.removeAll();
 
-        ctpn = ctpnDAO.laySpInPn(search);
-        if (ctpn == null || ctpn.isEmpty()) {
+//        ctpn = ctpnDAO.laySpInPn(search);
+        dssp = spDAO.layDsSp(search);
+
+        if (dssp == null || dssp.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Danh sách sản phẩm trống!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
 
         // Với mỗi sản phẩm, tạo 1 panel để hiển thị thông tin và nút thao tác
-        for (ChiTietPhieuNhapDTO ctpnDto : ctpn) {
-            SanPhamDTO sppn = spDAO.laySpId(ctpnDto.getIdProduct());
+        for (SanPhamDTO spDto : dssp) {
+            SanPhamDTO sppn = spDAO.laySpId(spDto.getId());
             if (sppn == null) {
                 continue;
             }
@@ -262,8 +254,8 @@ public class trangchu extends javax.swing.JPanel {
             infoContainer.setBackground(Color.WHITE);
 
             JLabel lblTen = new JLabel("<html>Tên: " + sppn.getName() + "</html>");
-            JLabel lblGia = new JLabel(" Giá: $" + (ctpnDto.getEprice() != null ? ctpnDto.getEprice() : "Không có giá"), SwingConstants.LEFT);
-            JLabel lblCon = new JLabel(" Còn: " + ctpnDto.getQtyExist(), SwingConstants.LEFT);
+            JLabel lblGia = new JLabel(" Giá: $" + (spDto.getPrice() != null ? spDto.getPrice() : "Không có giá"), SwingConstants.LEFT);
+            JLabel lblCon = new JLabel(" Còn: " + spDto.getQty(), SwingConstants.LEFT);
             lblTen.setFont(new Font("Arial", Font.BOLD, 14));
             lblGia.setFont(new Font("Arial", Font.BOLD, 14));
             lblCon.setFont(new Font("Arial", Font.BOLD, 14));
@@ -283,7 +275,7 @@ public class trangchu extends javax.swing.JPanel {
                 public void actionPerformed(ActionEvent e) {
                     // Tạo panel thông tin chi tiết sản phẩm
                     ChiTietSanPham panelChiTiet = new ChiTietSanPham();
-                    panelChiTiet.setSanPham(sppn, ctpnDto);
+                    panelChiTiet.setSanPham(sppn, spDto);
 
                     // Tạo JDialog chứa panel
                     JDialog dialog = new JDialog((JFrame) SwingUtilities.getWindowAncestor(jpnDssp), "Chi tiết sản phẩm", true);
@@ -338,11 +330,11 @@ public class trangchu extends javax.swing.JPanel {
                         JOptionPane.showMessageDialog(null, "Vui lòng chọn số lượng hợp lệ!", "Lỗi", JOptionPane.ERROR_MESSAGE);
                         return;
                     }
-                    if (soLuong > ctpnDto.getQtyExist()) {
+                    if (soLuong > spDto.getQty()) {
                         JOptionPane.showMessageDialog(null, "Số lượng vượt quá tồn kho!", "Lỗi", JOptionPane.ERROR_MESSAGE);
                         return;
                     }
-                    themVaoHoaDon(ctpnDto, sppn, soLuong, Double.parseDouble(ctpnDto.getEprice()));
+                    themVaoHoaDon(spDto, sppn, soLuong, Double.parseDouble(spDto.getPrice()));
                 }
             });
 
@@ -366,7 +358,7 @@ public class trangchu extends javax.swing.JPanel {
         jpnDssp.repaint();
     }
 
-    private void themVaoHoaDon(ChiTietPhieuNhapDTO ctpn, SanPhamDTO sp, int soLuong, Double donGia) {
+    private void themVaoHoaDon(SanPhamDTO ctpn, SanPhamDTO sp, int soLuong, Double donGia) {
         DefaultTableModel model = (DefaultTableModel) jtbCthd.getModel();
         boolean daTonTai = false;
 
@@ -375,7 +367,7 @@ public class trangchu extends javax.swing.JPanel {
             if (model.getValueAt(i, 1).equals(ctpn.getId())) {
                 int soLuongHienTai = (int) model.getValueAt(i, 3);
                 int tongSoLuong = soLuongHienTai + soLuong;
-                if (tongSoLuong > ctpn.getQtyExist() || tongSoLuong > 100) {
+                if (tongSoLuong > ctpn.getQty() || tongSoLuong > 100) {
                     JOptionPane.showMessageDialog(null, "Số lượng vượt quá tồn kho hoặc lớn hơn 100!", "Lỗi", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
@@ -393,10 +385,10 @@ public class trangchu extends javax.swing.JPanel {
 
         tinhTongHoaDon();
     }
-
-   
+    private DiscountBUS dcBUS= new DiscountBUS();
     private void tinhTongHoaDon() {
         double tongTien = 0;
+        DiscountDTO gg = dcBUS.laytengg(txtDiscount.getText());
         DefaultTableModel model = (DefaultTableModel) jtbCthd.getModel();
 
         for (int i = 0; i < model.getRowCount(); i++) {
@@ -404,7 +396,8 @@ public class trangchu extends javax.swing.JPanel {
             double giaTri = Double.parseDouble(model.getValueAt(i, 5).toString());
             tongTien += giaTri;
         }
-
+        double giamgia= Double.parseDouble(gg.getPercent()+"");
+        tongTien = tongTien - tongTien*(giamgia/100);
         // Định dạng số với 3 chữ số sau dấu chấm
         DecimalFormat df = new DecimalFormat("#.###");
 
@@ -461,9 +454,11 @@ public class trangchu extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         txtMahoadon = new javax.swing.JTextField();
         btnXoa = new javax.swing.JButton();
-        btnTt = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         txtTongTien = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        txtDiscount = new javax.swing.JTextField();
+        btnTt = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(51, 255, 255));
         setPreferredSize(new java.awt.Dimension(1125, 667));
@@ -480,7 +475,7 @@ public class trangchu extends javax.swing.JPanel {
         jpnDssp.setLayout(jpnDsspLayout);
         jpnDsspLayout.setHorizontalGroup(
             jpnDsspLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 731, Short.MAX_VALUE)
         );
         jpnDsspLayout.setVerticalGroup(
             jpnDsspLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -568,12 +563,15 @@ public class trangchu extends javax.swing.JPanel {
         btnXoa.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnXoa.setText("Xóa");
 
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel5.setText("  Tổng tiền:");
+
+        jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel6.setText("Khuyến mãi:");
+
         btnTt.setBackground(new java.awt.Color(51, 204, 0));
         btnTt.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnTt.setText("Thanh toán");
-
-        jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel5.setText("  Tổng tiền:");
 
         javax.swing.GroupLayout jpnHoadonLayout = new javax.swing.GroupLayout(jpnHoadon);
         jpnHoadon.setLayout(jpnHoadonLayout);
@@ -586,19 +584,24 @@ public class trangchu extends javax.swing.JPanel {
             .addGroup(jpnHoadonLayout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(btnXoa)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
                 .addComponent(btnTt)
-                .addGap(45, 45, 45))
-            .addGroup(jpnHoadonLayout.createSequentialGroup()
-                .addGroup(jpnHoadonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpnHoadonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtMahoadon, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 39, Short.MAX_VALUE))
+                .addGap(65, 65, 65))
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addGroup(jpnHoadonLayout.createSequentialGroup()
+                .addGroup(jpnHoadonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpnHoadonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jpnHoadonLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jpnHoadonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtMahoadon, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTongTien, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
+                    .addComponent(txtDiscount))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jpnHoadonLayout.setVerticalGroup(
             jpnHoadonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -615,11 +618,19 @@ public class trangchu extends javax.swing.JPanel {
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtMahoadon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jpnHoadonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtTongTien, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                .addGroup(jpnHoadonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jpnHoadonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpnHoadonLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnHoadonLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtDiscount, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jpnHoadonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnXoa)
@@ -647,6 +658,8 @@ public class trangchu extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNguoitaoActionPerformed
 
+    
+
     private ChiTietPhieuNhapBUS ctpnBUS = new ChiTietPhieuNhapBUS();
 //    private javax.swing.JPanel jpnDssp;
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -658,12 +671,14 @@ public class trangchu extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel jpnDssp;
     private javax.swing.JPanel jpnHoadon;
     private javax.swing.JPanel jpnLeft;
     private javax.swing.JPanel jpnProduct;
     private javax.swing.JTable jtbCthd;
+    private javax.swing.JTextField txtDiscount;
     private javax.swing.JTextField txtMahoadon;
     private javax.swing.JTextField txtNgaytao;
     private javax.swing.JTextField txtNguoitao;

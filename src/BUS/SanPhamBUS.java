@@ -10,26 +10,19 @@ import Util.dialog;
 import com.mysql.cj.jdbc.Blob;
 import java.awt.Component;
 import java.awt.Image;
-import java.awt.event.ItemEvent;
-import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.imageio.ImageIO;
 import javax.swing.AbstractCellEditor;
-import javax.swing.Icon;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
-import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
@@ -79,7 +72,9 @@ public class SanPhamBUS {
     public SanPhamDTO laySpId(int id) {
         return spDAO.laySpId(id);
     }
-
+    public ArrayList<SanPhamDTO> laydanhsachsp(String search){
+        return spDAO.layDsSp(search);
+    }
     public void layDsSp(JTable tbl, String search) {
         listSp = spDAO.layDsSp(search);
         model = new DefaultTableModel(

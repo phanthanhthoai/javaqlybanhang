@@ -3,13 +3,48 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/project/qlbanhang/src/GUI/hienthisanpham.java</file>
+            <file>file:/C:/project/qlbanhang/src/GUI/ChiTietSanPham.java</file>
+            <file>file:/C:/project/qlbanhang/src/GUI/DanhMucBean.java</file>
+            <file>file:/C:/project/qlbanhang/src/BUS/RoleBUS.java</file>
+            <file>file:/C:/project/qlbanhang/src/DAO/TaiKhoanDAO.java</file>
+            <file>file:/C:/project/qlbanhang/src/DTO/DsSpBanChay.java</file>
+            <file>file:/C:/project/qlbanhang/src/BUS/PhieuNhapBUS.java</file>
+            <file>file:/C:/project/qlbanhang/src/GUI/Login.java</file>
+            <file>file:/C:/project/qlbanhang/src/DAO/SanPhamDAO.java</file>
+            <file>file:/C:/project/qlbanhang/src/GUI/loggedIn.java</file>
+            <file>file:/C:/project/qlbanhang/src/GUI/trangchu.java</file>
+            <file>file:/C:/project/qlbanhang/src/DTO/DiscountDTO.java</file>
+            <file>file:/C:/project/qlbanhang/src/DTO/RoleDTO.java</file>
+            <file>file:/C:/project/qlbanhang/src/DAO/RolePermissionDAO.java</file>
+            <file>file:/C:/project/qlbanhang/src/BUS/NhaCungCapBUS.java</file>
+            <file>file:/C:/project/qlbanhang/src/DTO/BillDTO.java</file>
+            <file>file:/C:/project/qlbanhang/src/DAO/RoleDAO.java</file>
+            <file>file:/C:/project/qlbanhang/src/GUI/ScheduleManager.java</file>
+            <file>file:/C:/project/qlbanhang/src/GUI/sanpham.java</file>
             <file>file:/C:/project/qlbanhang/src/DAO/NhaCungCapDAO.java</file>
             <file>file:/C:/project/qlbanhang/src/GUI/taikhoan.java</file>
+            <file>file:/C:/project/qlbanhang/src/GUI/phieunhap.java</file>
+            <file>file:/C:/project/qlbanhang/src/GUI/hoadon.java</file>
+            <file>file:/C:/project/qlbanhang/src/DAO/DiscountDAO.java</file>
+            <file>file:/C:/project/qlbanhang/src/GUI/giamgia.java</file>
+            <file>file:/C:/project/qlbanhang/src/DTO/NhaCungCapDTO.java</file>
+            <file>file:/C:/project/qlbanhang/src/BUS/loginBUS.java</file>
+            <file>file:/C:/project/qlbanhang/src/GUI/danhsachphieunhap.java</file>
+            <file>file:/C:/project/qlbanhang/src/DAO/loginDAO.java</file>
+            <file>file:/C:/project/qlbanhang/src/DTO/PhieuNhapDTO.java</file>
+            <file>file:/C:/project/qlbanhang/src/BUS/SanPhamBUS.java</file>
             <file>file:/C:/project/qlbanhang/src/GUI/nhanvien.java</file>
             <file>file:/C:/project/qlbanhang/src/GUI/nhacungcap.java</file>
-            <file>file:/C:/project/qlbanhang/src/DAO/TaiKhoanDAO.java</file>
-            <file>file:/C:/project/qlbanhang/src/BUS/NhaCungCapBUS.java</file>
-            <file>file:/C:/project/qlbanhang/src/DTO/NhaCungCapDTO.java</file>
+            <file>file:/C:/project/qlbanhang/src/GUI/SidebarExample.java</file>
+            <file>file:/C:/project/qlbanhang/src/DAO/PermissionDAO.java</file>
+            <file>file:/C:/project/qlbanhang/src/BUS/DiscountBUS.java</file>
+            <file>file:/C:/project/qlbanhang/src/GUI/RolePermissionForm.java</file>
+            <file>file:/C:/project/qlbanhang/src/BUS/BillBUS.java</file>
+            <file>file:/C:/project/qlbanhang/src/BUS/ChiTietPhieuNhapBUS.java</file>
+            <file>file:/C:/project/qlbanhang/src/GUI/ProductDisplay.java</file>
+            <file>file:/C:/project/qlbanhang/src/DTO/SanPhamDTO.java</file>
+            <file>file:/C:/project/qlbanhang/src/GUI/thongke.java</file>
         </group>
     </open-files>
 </project-private>

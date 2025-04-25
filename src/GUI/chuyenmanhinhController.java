@@ -67,7 +67,8 @@ public class chuyenmanhinhController {
             item.getJlb().addMouseListener(new LabelEvent(item.getKind(), item.getJpn(), item.getJlb()));
         }
     }
-    public void setPanel(DanhMucBean dm){
+
+    public void setPanel(DanhMucBean dm) {
         dm.getJlb().addMouseListener(new LabelEvent(dm.getKind(), dm.getJpn(), dm.getJlb()));
     }
 
@@ -130,10 +131,12 @@ public class chuyenmanhinhController {
         @Override
         public void mouseClicked(MouseEvent e) {
             String code = "view_" + kind;
-
-            if (!UserPermissions.getInstance().hasPermission(code)) {
-                JOptionPane.showMessageDialog(null, "Bạn không có quyền truy cập vào mục này!");
-                return;
+   
+            if (!kind.equals("danhsachphieunhap")) {
+                if (!UserPermissions.getInstance().hasPermission(code)) {
+                    JOptionPane.showMessageDialog(null, "Bạn không có quyền truy cập vào mục này!");
+                    return;
+                }
             }
 
             switch (kind) {
@@ -166,6 +169,9 @@ public class chuyenmanhinhController {
                     break;
                 case "nhacungcap":
                     node = new nhacungcap();
+                    break;
+                case "giamgia":
+                    node = new giamgia();
                     break;
                 default:
                     return;

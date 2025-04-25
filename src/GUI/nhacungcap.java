@@ -335,7 +335,7 @@ public class nhacungcap extends javax.swing.JPanel {
 
             if (nccBUS.themNcc(nameNcc, sdt, diachi)) {
                 refresh();
-                JOptionPane.showMessageDialog(null, "oke", "Success", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Thêm nhà cung cấp thành công!", "Success", JOptionPane.INFORMATION_MESSAGE);
                 hienthidsncc();
             }
         }
@@ -350,7 +350,7 @@ public class nhacungcap extends javax.swing.JPanel {
             String diachi = txtDiachi.getText();
             if (nccBUS.suaNcc(idncc, nameNcc, sdt, diachi)) {
                 refresh();
-                JOptionPane.showMessageDialog(null, "oke", "Success", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Cập nhật nhà cung cấp thành công!", "Success", JOptionPane.INFORMATION_MESSAGE);
                 hienthidsncc();
             }
         }
@@ -363,7 +363,7 @@ public class nhacungcap extends javax.swing.JPanel {
             int tt = nccBUS.layNccid(idncc).getDeleted();
             if (nccBUS.chinhTt(idncc, tt)) {
                 refresh();
-                JOptionPane.showMessageDialog(null, "oke", "Success", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Chỉnh sửa trạng thái thành công!", "Success", JOptionPane.INFORMATION_MESSAGE);
                 hienthidsncc();
             }
         }

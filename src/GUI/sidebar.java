@@ -45,6 +45,7 @@ public class sidebar extends javax.swing.JFrame {
         listItem.add(new DanhMucBean("hoadon", jpnHoadon, jlbHoadon));
         listItem.add(new DanhMucBean("taikhoan", jpnTaikhoan, jlbTaikhoan));
         listItem.add(new DanhMucBean("nhacungcap", jpnNhacungcap, jlbNhacungcap));
+        listItem.add(new DanhMucBean("giamgia", jpnKhuyenmai, jlbKhuyenmai));
 
         controller.setEvent(listItem);
 //        cauhinh();
@@ -72,6 +73,8 @@ public class sidebar extends javax.swing.JFrame {
         jlbThongke.setFont(new Font("Arial", Font.BOLD, 14));
         jlbTrangchu.setFont(new Font("Arial", Font.BOLD, 14));
         jlbVaitro.setFont(new Font("Arial", Font.BOLD, 14));
+        jlbKhuyenmai.setFont(new Font("Arial", Font.BOLD, 14));
+
     }
 
     @SuppressWarnings("unchecked")
@@ -100,10 +103,11 @@ public class sidebar extends javax.swing.JFrame {
         jlbThongke = new javax.swing.JLabel();
         jpnDangxuat = new javax.swing.JPanel();
         jlbLogout = new javax.swing.JLabel();
+        jpnKhuyenmai = new javax.swing.JPanel();
+        jlbKhuyenmai = new javax.swing.JLabel();
         jpnView = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1404, 720));
 
         jpnBar.setBackground(new java.awt.Color(0, 204, 102));
         jpnBar.setPreferredSize(new java.awt.Dimension(219, 667));
@@ -267,10 +271,24 @@ public class sidebar extends javax.swing.JFrame {
                 .addGap(0, 6, Short.MAX_VALUE))
         );
 
+        jlbKhuyenmai.setText("Khuyến mãi");
+
+        javax.swing.GroupLayout jpnKhuyenmaiLayout = new javax.swing.GroupLayout(jpnKhuyenmai);
+        jpnKhuyenmai.setLayout(jpnKhuyenmaiLayout);
+        jpnKhuyenmaiLayout.setHorizontalGroup(
+            jpnKhuyenmaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlbKhuyenmai, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jpnKhuyenmaiLayout.setVerticalGroup(
+            jpnKhuyenmaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlbKhuyenmai, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jpnBarLayout = new javax.swing.GroupLayout(jpnBar);
         jpnBar.setLayout(jpnBarLayout);
         jpnBarLayout.setHorizontalGroup(
             jpnBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jpnDangxuat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jpnBarLayout.createSequentialGroup()
                 .addGroup(jpnBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpnBarLayout.createSequentialGroup()
@@ -288,9 +306,11 @@ public class sidebar extends javax.swing.JFrame {
                             .addComponent(jpnTaikhoan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jpnHoadon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jpnSanpham, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
-                            .addComponent(jpnNhanvien, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE))))
+                            .addComponent(jpnNhanvien, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)))
+                    .addGroup(jpnBarLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jpnKhuyenmai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addComponent(jpnDangxuat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jpnBarLayout.setVerticalGroup(
             jpnBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -305,7 +325,9 @@ public class sidebar extends javax.swing.JFrame {
                 .addComponent(jpnNhanvien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(jpnTaikhoan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 64, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jpnKhuyenmai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(jpnHoadon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25)
                 .addComponent(jpnVaitro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -371,6 +393,7 @@ public class sidebar extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel jlbHoadon;
+    private javax.swing.JLabel jlbKhuyenmai;
     private javax.swing.JLabel jlbLogout;
     private javax.swing.JLabel jlbNhacungcap;
     private javax.swing.JLabel jlbNhanvien;
@@ -383,6 +406,7 @@ public class sidebar extends javax.swing.JFrame {
     private javax.swing.JPanel jpnBar;
     private javax.swing.JPanel jpnDangxuat;
     private javax.swing.JPanel jpnHoadon;
+    private javax.swing.JPanel jpnKhuyenmai;
     private javax.swing.JPanel jpnNhacungcap;
     private javax.swing.JPanel jpnNhanvien;
     private javax.swing.JPanel jpnPhieunhap;

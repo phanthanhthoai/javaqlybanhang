@@ -24,10 +24,10 @@ public class ChiTietSanPham extends javax.swing.JPanel {
         initComponents();
     }
 
-    public void setSanPham(SanPhamDTO sppn, ChiTietPhieuNhapDTO ctpnDto) {
+    public void setSanPham(SanPhamDTO sppn, SanPhamDTO ctpnDto) {
         txtId.setText(String.valueOf(sppn.getId()));
         txtName.setText(sppn.getName());
-        txtPrice.setText("$" + (ctpnDto.getEprice() != null ? ctpnDto.getEprice() : "Không có giá"));
+        txtPrice.setText("$" + (ctpnDto.getPrice()!= null ? ctpnDto.getPrice() : "Không có giá"));
         txtDescript.setText(sppn.getDescription());
         // Hiển thị ảnh sản phẩm
         jlbHinhanh.removeAll();
