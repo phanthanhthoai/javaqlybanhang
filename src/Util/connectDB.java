@@ -23,26 +23,45 @@ public class connectDB {
                 return connection;
             }
 
-            // Nạp driver (chỉ cần thực hiện một lần trong suốt vòng đời ứng dụng)
+            // Nạp driver MySQL
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            String url = "jdbc:mysql://localhost:3306/javaswing?"
+            // Cấu hình URL kết nối
+            String url = "jdbc:mysql://localhost:3306/qlch?"
                     + "useSSL=false&"
                     + "allowPublicKeyRetrieval=true&"
                     + "autoReconnect=true&"
                     + "serverTimezone=UTC";
 
-            connection = DriverManager.getConnection(url, "root", "123456");
+            // Thông tin đăng nhập
+            String username = "root"; // Username mặc định của XAMPP
+            String password = "";     // Password mặc định của XAMPP (rỗng)
+
+            // Kết nối đến database
+            connection = DriverManager.getConnection(url, username, password);
 
             System.out.println("Kết nối MySQL thành công!");
 
         } catch (ClassNotFoundException e) {
             System.err.println("Lỗi: MySQL Driver không tìm thấy! " + e.getMessage());
+            connection = null;
         } catch (SQLException sqlException) {
             System.err.println("Lỗi kết nối MySQL: " + sqlException.getMessage());
-            connection = null;  // Đảm bảo connection không trỏ vào một kết nối lỗi
+            connection = null; // Đảm bảo connection không trỏ vào một kết nối lỗi
         }
         return connection;
+    }
+
+    // Phương thức để đóng kết nối (tùy chọn, nếu cần)
+    public static void closeConnection() {
+        try {
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
+                System.out.println("Đóng kết nối MySQL thành công!");
+            }
+        } catch (SQLException e) {
+            System.err.println("Lỗi khi đóng kết nối: " + e.getMessage());
+        }
     }
 //    public static Connection getConnection() {
 //        if (connection != null) {

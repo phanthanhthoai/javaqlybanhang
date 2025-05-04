@@ -1,11 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package DAO;
 
-import BUS.ChiTietPhieuNhapBUS;
-import DTO.ChiTietPhieuNhapDTO;
 import Util.connectDB;
 import java.math.BigDecimal;
 import java.sql.Connection;
@@ -19,10 +13,6 @@ import javax.swing.table.DefaultTableModel;
  */
 public class BillDetailsDAO {
 
-    private ChiTietPhieuNhapBUS ctpnBUS = new ChiTietPhieuNhapBUS();
-    
-    
-    
     public boolean themChiTietHoaDon(DefaultTableModel model, int idBill) {
         boolean kq = false;
         String sql = "INSERT INTO billdetails (idBill, idProduct, price, quantity, totalPay, idGrnDetails) VALUES (?, ?, ?, ?, ?, ?)";
@@ -37,26 +27,18 @@ public class BillDetailsDAO {
             int count = 0; // Đếm số dòng hợp lệ để insert
 
             for (int i = 0; i < model.getRowCount(); i++) {
-                int idCtpn = Integer.parseInt(model.getValueAt(i, 1).toString().trim());
-            ChiTietPhieuNhapDTO ctpnDTO = ctpnBUS.layCtpnId(idCtpn);
-
-                if (ctpnDTO == null) {
-                    System.err.println("Không tìm thấy ChiTietPhieuNhapDTO với idGrnDetails: " + idCtpn);
-                    continue;
-                }
-
-            int idProduct = ctpnDTO.getIdProduct();
-
-                int quantity = Integer.parseInt(model.getValueAt(i, 3).toString().trim());
-                BigDecimal price = new BigDecimal(model.getValueAt(i, 4).toString().trim());
-                BigDecimal totalPrice = new BigDecimal(model.getValueAt(i, 5).toString().trim());
+                int idGrnDetails = Integer.parseInt(model.getValueAt(i, 1).toString().trim()); // Cột idGrnDetails
+                int idProduct = Integer.parseInt(model.getValueAt(i, 2).toString().trim()); // Cột idProduct
+                int quantity = Integer.parseInt(model.getValueAt(i, 3).toString().trim()); // Cột Quantity
+                BigDecimal price = new BigDecimal(model.getValueAt(i, 4).toString().trim()); // Cột Price
+                BigDecimal totalPrice = new BigDecimal(model.getValueAt(i, 5).toString().trim()); // Cột Total
 
                 stmt.setInt(1, idBill);
                 stmt.setInt(2, idProduct);
-                stmt.setBigDecimal(3, price);
+                stmt.setString(3, price.toString());
                 stmt.setInt(4, quantity);
-                stmt.setBigDecimal(5, totalPrice);
-                stmt.setInt(6, idCtpn);
+                stmt.setString(5, totalPrice.toString());
+                stmt.setInt(6, idGrnDetails);
 
                 stmt.addBatch();
                 count++;
@@ -86,5 +68,4 @@ public class BillDetailsDAO {
         }
         return kq;
     }
-
 }
