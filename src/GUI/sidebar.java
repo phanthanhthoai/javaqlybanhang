@@ -21,6 +21,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import java.lang.ClassNotFoundException;
+import java.lang.InstantiationException;
+import java.lang.IllegalAccessException;
 
 public class sidebar extends javax.swing.JFrame {
 
@@ -304,20 +310,33 @@ public class sidebar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public static void main(String args[]) {
-
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    new sidebar().setVisible(true);
-                } catch (SQLException ex) {
-                    Logger.getLogger(sidebar.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (IOException ex) {
-                    Logger.getLogger(sidebar.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        });
+public static void main(String args[]) {
+    /* Đặt Look and Feel */
+    try {
+        // Thử Windows Look and Feel
+        UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+    } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+        try {
+            // Nếu không hỗ trợ, dùng Nimbus Look and Feel
+            UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+        } catch (Exception e) {
+            Logger.getLogger(sidebar.class.getName()).log(Level.SEVERE, null, e);
+        }
     }
+
+    /* Tạo và hiển thị giao diện */
+    java.awt.EventQueue.invokeLater(new Runnable() {
+        public void run() {
+            try {
+                new sidebar().setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(sidebar.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(sidebar.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    });
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
