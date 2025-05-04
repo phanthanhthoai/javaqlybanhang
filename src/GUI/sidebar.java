@@ -85,26 +85,37 @@ public class sidebar extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jpnTrangchu = new javax.swing.JPanel();
         jlbTrangchu = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jpnSanpham = new javax.swing.JPanel();
         jlbSanpham = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jpnNhanvien = new javax.swing.JPanel();
         jlbNhanvien = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jpnTaikhoan = new javax.swing.JPanel();
         jlbTaikhoan = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jpnKhuyenmai = new javax.swing.JPanel();
         jlbKhuyenmai = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jpnHoadon = new javax.swing.JPanel();
         jlbHoadon = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jpnVaitro = new javax.swing.JPanel();
         jlbVaitro = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jpnPhieunhap = new javax.swing.JPanel();
         jlbPhieunhap = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         jpnNhacungcap = new javax.swing.JPanel();
         jlbNhacungcap = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         jpnThongke = new javax.swing.JPanel();
         jlbThongke = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
         jpnDangxuat = new javax.swing.JPanel();
         jlbLogout = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
         jpnView = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -129,6 +140,9 @@ public class sidebar extends javax.swing.JFrame {
         jlbTrangchu.setToolTipText("");
         jpnTrangchu.add(jlbTrangchu, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 7, 100, 20));
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/home.png"))); // NOI18N
+        jpnTrangchu.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
+
         jpnBar.add(jpnTrangchu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 225, 35));
 
         jpnSanpham.setBackground(new java.awt.Color(255, 204, 0));
@@ -140,6 +154,9 @@ public class sidebar extends javax.swing.JFrame {
         jlbSanpham.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlbSanpham.setText("Sản Phẩm");
         jpnSanpham.add(jlbSanpham, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 7, 100, 20));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/product.png"))); // NOI18N
+        jpnSanpham.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
 
         jpnBar.add(jpnSanpham, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 155, 225, 35));
 
@@ -153,6 +170,9 @@ public class sidebar extends javax.swing.JFrame {
         jlbNhanvien.setText("Nhân Viên");
         jpnNhanvien.add(jlbNhanvien, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 7, 104, 20));
 
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/staff.png"))); // NOI18N
+        jpnNhanvien.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
+
         jpnBar.add(jpnNhanvien, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 225, 35));
 
         jpnTaikhoan.setBackground(new java.awt.Color(255, 204, 0));
@@ -163,6 +183,9 @@ public class sidebar extends javax.swing.JFrame {
         jlbTaikhoan.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlbTaikhoan.setText("Tài Khoản");
         jpnTaikhoan.add(jlbTaikhoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 7, 95, 20));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/account.png"))); // NOI18N
+        jpnTaikhoan.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
 
         jpnBar.add(jpnTaikhoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 265, 225, 35));
 
@@ -175,6 +198,9 @@ public class sidebar extends javax.swing.JFrame {
         jlbKhuyenmai.setText("Khuyến mãi");
         jpnKhuyenmai.add(jlbKhuyenmai, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 7, 109, 20));
 
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/discout.png"))); // NOI18N
+        jpnKhuyenmai.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
+
         jpnBar.add(jpnKhuyenmai, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 225, 35));
 
         jpnHoadon.setBackground(new java.awt.Color(255, 204, 0));
@@ -185,6 +211,9 @@ public class sidebar extends javax.swing.JFrame {
         jlbHoadon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlbHoadon.setText("Hóa Đơn");
         jpnHoadon.add(jlbHoadon, new org.netbeans.lib.awtextra.AbsoluteConstraints(67, 7, 90, 20));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/invoice.png"))); // NOI18N
+        jpnHoadon.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
 
         jpnBar.add(jpnHoadon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 375, 225, 35));
 
@@ -197,6 +226,9 @@ public class sidebar extends javax.swing.JFrame {
         jlbVaitro.setText("Vai trò");
         jpnVaitro.add(jlbVaitro, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 7, 93, 20));
 
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/role.png"))); // NOI18N
+        jpnVaitro.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
+
         jpnBar.add(jpnVaitro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 225, 35));
 
         jpnPhieunhap.setBackground(new java.awt.Color(255, 204, 0));
@@ -208,6 +240,9 @@ public class sidebar extends javax.swing.JFrame {
         jlbPhieunhap.setText("Phiếu Nhập");
         jpnPhieunhap.add(jlbPhieunhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 7, -1, 20));
 
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/inbound.png"))); // NOI18N
+        jpnPhieunhap.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
+
         jpnBar.add(jpnPhieunhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 485, 225, 35));
 
         jpnNhacungcap.setBackground(new java.awt.Color(255, 204, 0));
@@ -218,6 +253,9 @@ public class sidebar extends javax.swing.JFrame {
         jlbNhacungcap.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlbNhacungcap.setText("Nhà Cung Cấp");
         jpnNhacungcap.add(jlbNhacungcap, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 7, -1, 20));
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/supplier.png"))); // NOI18N
+        jpnNhacungcap.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
 
         jpnBar.add(jpnNhacungcap, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 540, 225, 35));
 
@@ -231,6 +269,9 @@ public class sidebar extends javax.swing.JFrame {
         jlbThongke.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jpnThongke.add(jlbThongke, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 7, 86, 20));
 
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/stats.png"))); // NOI18N
+        jpnThongke.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
+
         jpnBar.add(jpnThongke, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 595, 225, 35));
 
         jpnDangxuat.setBackground(new java.awt.Color(255, 0, 0));
@@ -239,12 +280,15 @@ public class sidebar extends javax.swing.JFrame {
         jlbLogout.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jlbLogout.setForeground(new java.awt.Color(255, 255, 255));
         jlbLogout.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlbLogout.setText("LOG OUT");
+        jlbLogout.setText("Đăng Xuất");
         jlbLogout.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jlbLogout.setMaximumSize(new java.awt.Dimension(75, 19));
         jlbLogout.setMinimumSize(new java.awt.Dimension(75, 19));
         jlbLogout.setPreferredSize(new java.awt.Dimension(75, 19));
         jpnDangxuat.add(jlbLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 7, 126, 20));
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/logout (1).png"))); // NOI18N
+        jpnDangxuat.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
 
         jpnBar.add(jpnDangxuat, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 690, 225, 35));
 
@@ -256,11 +300,11 @@ public class sidebar extends javax.swing.JFrame {
         jpnView.setLayout(jpnViewLayout);
         jpnViewLayout.setHorizontalGroup(
             jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1211, Short.MAX_VALUE)
+            .addGap(0, 1131, Short.MAX_VALUE)
         );
         jpnViewLayout.setVerticalGroup(
             jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 725, Short.MAX_VALUE)
+            .addGap(0, 713, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -269,14 +313,17 @@ public class sidebar extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jpnBar, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jpnView, javax.swing.GroupLayout.PREFERRED_SIZE, 1211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jpnView, javax.swing.GroupLayout.PREFERRED_SIZE, 1131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpnView, javax.swing.GroupLayout.DEFAULT_SIZE, 725, Short.MAX_VALUE)
             .addComponent(jpnBar, javax.swing.GroupLayout.DEFAULT_SIZE, 725, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jpnView, javax.swing.GroupLayout.DEFAULT_SIZE, 713, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -299,6 +346,17 @@ public class sidebar extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jlbHoadon;
     private javax.swing.JLabel jlbKhuyenmai;
     private javax.swing.JLabel jlbLogout;
