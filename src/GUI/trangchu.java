@@ -439,11 +439,12 @@ public class trangchu extends javax.swing.JPanel {
     private void initComponents() {
 
         jpnLeft = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        txtTimKiem = new javax.swing.JTextField();
-        btnTimkiem = new javax.swing.JButton();
         jpnProduct = new javax.swing.JPanel();
         jpnDssp = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        txtTimKiem = new javax.swing.JTextField();
+        btnTimkiem = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jpnHoadon = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtbCthd = new javax.swing.JTable();
@@ -461,61 +462,95 @@ public class trangchu extends javax.swing.JPanel {
         btnTt = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(51, 255, 255));
+        setMinimumSize(new java.awt.Dimension(1180, 750));
         setPreferredSize(new java.awt.Dimension(1125, 750));
         setLayout(new java.awt.BorderLayout());
 
         jpnLeft.setBackground(new java.awt.Color(255, 255, 255));
-        jpnLeft.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jpnLeft.setMinimumSize(new java.awt.Dimension(745, 750));
+        jpnLeft.setPreferredSize(new java.awt.Dimension(800, 750));
+        jpnLeft.setLayout(new java.awt.BorderLayout());
 
-        jLabel1.setBackground(new java.awt.Color(255, 51, 51));
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel1.setText("BÁN HÀNG");
-        jpnLeft.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 0, 89, 24));
-        jpnLeft.add(txtTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 30, 545, 31));
-
-        btnTimkiem.setBackground(new java.awt.Color(0, 204, 255));
-        btnTimkiem.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnTimkiem.setText("Tìm kiếm");
-        jpnLeft.add(btnTimkiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 31, -1, 30));
-
-        jpnProduct.setPreferredSize(new java.awt.Dimension(745, 750));
+        jpnProduct.setBackground(new java.awt.Color(255, 102, 204));
+        jpnProduct.setPreferredSize(new java.awt.Dimension(800, 683));
+        jpnProduct.setLayout(new java.awt.BorderLayout());
 
         jpnDssp.setBackground(new java.awt.Color(255, 255, 255));
-        jpnDssp.setPreferredSize(new java.awt.Dimension(731, 700));
+        jpnDssp.setMinimumSize(new java.awt.Dimension(700, 700));
+        jpnDssp.setPreferredSize(new java.awt.Dimension(800, 683));
 
         javax.swing.GroupLayout jpnDsspLayout = new javax.swing.GroupLayout(jpnDssp);
         jpnDssp.setLayout(jpnDsspLayout);
         jpnDsspLayout.setHorizontalGroup(
             jpnDsspLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 731, Short.MAX_VALUE)
+            .addGap(0, 800, Short.MAX_VALUE)
         );
         jpnDsspLayout.setVerticalGroup(
             jpnDsspLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 700, Short.MAX_VALUE)
+            .addGap(0, 736, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout jpnProductLayout = new javax.swing.GroupLayout(jpnProduct);
-        jpnProduct.setLayout(jpnProductLayout);
-        jpnProductLayout.setHorizontalGroup(
-            jpnProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpnProductLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jpnDssp, javax.swing.GroupLayout.DEFAULT_SIZE, 733, Short.MAX_VALUE)
-                .addContainerGap())
+        jpnProduct.add(jpnDssp, java.awt.BorderLayout.CENTER);
+
+        jpnLeft.add(jpnProduct, java.awt.BorderLayout.CENTER);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        txtTimKiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTimKiemActionPerformed(evt);
+            }
+        });
+
+        btnTimkiem.setBackground(new java.awt.Color(0, 204, 255));
+        btnTimkiem.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnTimkiem.setText("Tìm kiếm");
+        btnTimkiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimkiemActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setBackground(new java.awt.Color(255, 51, 51));
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel1.setText("BÁN HÀNG");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnTimkiem))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(319, 319, 319)
+                        .addComponent(jLabel1)))
+                .addContainerGap(137, Short.MAX_VALUE))
         );
-        jpnProductLayout.setVerticalGroup(
-            jpnProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpnProductLayout.createSequentialGroup()
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jpnDssp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTimkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jpnLeft.add(jpnProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 67, 745, -1));
+        jpnLeft.add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
         add(jpnLeft, java.awt.BorderLayout.CENTER);
 
         jpnHoadon.setBackground(new java.awt.Color(255, 255, 255));
+        jpnHoadon.setMinimumSize(new java.awt.Dimension(380, 750));
+        jpnHoadon.setPreferredSize(new java.awt.Dimension(380, 750));
         jpnHoadon.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jtbCthd.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -559,8 +594,10 @@ public class trangchu extends javax.swing.JPanel {
 
         btnXoa.setBackground(new java.awt.Color(255, 51, 51));
         btnXoa.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnXoa.setText("Xóa");
-        jpnHoadon.add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 620, -1, -1));
+        btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/delete.png"))); // NOI18N
+        btnXoa.setMnemonic('x');
+        btnXoa.setText("XÓA");
+        jpnHoadon.add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 620, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel5.setText("  Tổng tiền:");
@@ -574,8 +611,9 @@ public class trangchu extends javax.swing.JPanel {
 
         btnTt.setBackground(new java.awt.Color(51, 204, 0));
         btnTt.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnTt.setText("Thanh toán");
-        jpnHoadon.add(btnTt, new org.netbeans.lib.awtextra.AbsoluteConstraints(208, 620, 110, -1));
+        btnTt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/pay.png"))); // NOI18N
+        btnTt.setText("THANH TOÁN");
+        jpnHoadon.add(btnTt, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 620, 160, -1));
 
         add(jpnHoadon, java.awt.BorderLayout.EAST);
     }// </editor-fold>//GEN-END:initComponents
@@ -583,6 +621,14 @@ public class trangchu extends javax.swing.JPanel {
     private void txtNguoitaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNguoitaoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNguoitaoActionPerformed
+
+    private void btnTimkiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimkiemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTimkiemActionPerformed
+
+    private void txtTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimKiemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTimKiemActionPerformed
 
     
 
@@ -598,6 +644,7 @@ public class trangchu extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel jpnDssp;
     private javax.swing.JPanel jpnHoadon;

@@ -125,18 +125,18 @@ public class sidebar extends javax.swing.JFrame {
         jpnView = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1368, 750));
-        setResizable(false);
+        setPreferredSize(new java.awt.Dimension(1400, 750));
 
         jpnBar.setBackground(new java.awt.Color(0, 153, 102));
         jpnBar.setForeground(new java.awt.Color(0, 153, 102));
-        jpnBar.setPreferredSize(new java.awt.Dimension(219, 667));
+        jpnBar.setMinimumSize(new java.awt.Dimension(220, 750));
+        jpnBar.setPreferredSize(new java.awt.Dimension(220, 750));
         jpnBar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/logo1.png"))); // NOI18N
         jLabel1.setToolTipText("");
-        jpnBar.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -2, 230, 90));
+        jpnBar.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -2, 220, 90));
 
         jpnTrangchu.setBackground(new java.awt.Color(255, 204, 0));
         jpnTrangchu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -151,7 +151,7 @@ public class sidebar extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/home.png"))); // NOI18N
         jpnTrangchu.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
 
-        jpnBar.add(jpnTrangchu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 225, 35));
+        jpnBar.add(jpnTrangchu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 220, 35));
 
         jpnSanpham.setBackground(new java.awt.Color(255, 204, 0));
         jpnSanpham.setPreferredSize(new java.awt.Dimension(52, 35));
@@ -166,7 +166,7 @@ public class sidebar extends javax.swing.JFrame {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/product.png"))); // NOI18N
         jpnSanpham.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
 
-        jpnBar.add(jpnSanpham, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 155, 225, 35));
+        jpnBar.add(jpnSanpham, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 155, 220, 35));
 
         jpnNhanvien.setBackground(new java.awt.Color(255, 204, 51));
         jpnNhanvien.setPreferredSize(new java.awt.Dimension(53, 35));
@@ -181,7 +181,7 @@ public class sidebar extends javax.swing.JFrame {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/staff.png"))); // NOI18N
         jpnNhanvien.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
 
-        jpnBar.add(jpnNhanvien, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 225, 35));
+        jpnBar.add(jpnNhanvien, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 220, 35));
 
         jpnTaikhoan.setBackground(new java.awt.Color(255, 204, 0));
         jpnTaikhoan.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -195,7 +195,7 @@ public class sidebar extends javax.swing.JFrame {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/account.png"))); // NOI18N
         jpnTaikhoan.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
 
-        jpnBar.add(jpnTaikhoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 265, 225, 35));
+        jpnBar.add(jpnTaikhoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 265, 220, 35));
 
         jpnKhuyenmai.setBackground(new java.awt.Color(255, 204, 0));
         jpnKhuyenmai.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -209,7 +209,7 @@ public class sidebar extends javax.swing.JFrame {
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/discout.png"))); // NOI18N
         jpnKhuyenmai.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
 
-        jpnBar.add(jpnKhuyenmai, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 225, 35));
+        jpnBar.add(jpnKhuyenmai, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 220, 35));
 
         jpnHoadon.setBackground(new java.awt.Color(255, 204, 0));
         jpnHoadon.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -223,7 +223,7 @@ public class sidebar extends javax.swing.JFrame {
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/invoice.png"))); // NOI18N
         jpnHoadon.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
 
-        jpnBar.add(jpnHoadon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 375, 225, 35));
+        jpnBar.add(jpnHoadon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 375, 220, 35));
 
         jpnVaitro.setBackground(new java.awt.Color(255, 204, 0));
         jpnVaitro.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -237,7 +237,7 @@ public class sidebar extends javax.swing.JFrame {
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/role.png"))); // NOI18N
         jpnVaitro.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
 
-        jpnBar.add(jpnVaitro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 225, 35));
+        jpnBar.add(jpnVaitro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 220, 35));
 
         jpnPhieunhap.setBackground(new java.awt.Color(255, 204, 0));
         jpnPhieunhap.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -251,7 +251,7 @@ public class sidebar extends javax.swing.JFrame {
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/inbound.png"))); // NOI18N
         jpnPhieunhap.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
 
-        jpnBar.add(jpnPhieunhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 485, 225, 35));
+        jpnBar.add(jpnPhieunhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 485, 220, 35));
 
         jpnNhacungcap.setBackground(new java.awt.Color(255, 204, 0));
         jpnNhacungcap.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -265,7 +265,7 @@ public class sidebar extends javax.swing.JFrame {
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/supplier.png"))); // NOI18N
         jpnNhacungcap.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
 
-        jpnBar.add(jpnNhacungcap, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 540, 225, 35));
+        jpnBar.add(jpnNhacungcap, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 540, 220, 35));
 
         jpnThongke.setBackground(new java.awt.Color(255, 204, 0));
         jpnThongke.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -280,7 +280,7 @@ public class sidebar extends javax.swing.JFrame {
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/stats.png"))); // NOI18N
         jpnThongke.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
 
-        jpnBar.add(jpnThongke, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 595, 225, 35));
+        jpnBar.add(jpnThongke, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 595, 220, 35));
 
         jpnDangxuat.setBackground(new java.awt.Color(255, 0, 0));
         jpnDangxuat.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -298,14 +298,16 @@ public class sidebar extends javax.swing.JFrame {
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/logout (1).png"))); // NOI18N
         jpnDangxuat.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
 
-        jpnBar.add(jpnDangxuat, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 650, 225, 35));
+        jpnBar.add(jpnDangxuat, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 650, 220, 35));
 
         getContentPane().add(jpnBar, java.awt.BorderLayout.WEST);
 
-        jpnView.setMaximumSize(new java.awt.Dimension(1125, 667));
-        jpnView.setMinimumSize(new java.awt.Dimension(1125, 667));
-        jpnView.setPreferredSize(new java.awt.Dimension(1125, 667));
-        getContentPane().add(jpnView, java.awt.BorderLayout.EAST);
+        jpnView.setBackground(new java.awt.Color(102, 255, 102));
+        jpnView.setMaximumSize(new java.awt.Dimension(3000, 3000));
+        jpnView.setMinimumSize(new java.awt.Dimension(1180, 750));
+        jpnView.setPreferredSize(new java.awt.Dimension(1145, 700));
+        jpnView.setLayout(new java.awt.BorderLayout());
+        getContentPane().add(jpnView, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
