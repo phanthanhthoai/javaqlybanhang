@@ -309,7 +309,7 @@ public class taikhoan extends javax.swing.JPanel {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 90, 40));
+        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 100, 40));
 
         jPanel3.add(cbbIdnv, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 140, 25));
 
