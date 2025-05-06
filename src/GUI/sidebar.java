@@ -302,7 +302,7 @@ public class sidebar extends javax.swing.JFrame {
 
         getContentPane().add(jpnBar, java.awt.BorderLayout.WEST);
 
-        jpnView.setBackground(new java.awt.Color(102, 255, 102));
+        jpnView.setBackground(new java.awt.Color(255, 255, 204));
         jpnView.setMaximumSize(new java.awt.Dimension(3000, 3000));
         jpnView.setMinimumSize(new java.awt.Dimension(1180, 750));
         jpnView.setPreferredSize(new java.awt.Dimension(1145, 700));

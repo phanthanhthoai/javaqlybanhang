@@ -82,6 +82,7 @@ public class Login extends javax.swing.JFrame {
 
         btnLogin.setBackground(new java.awt.Color(0, 153, 51));
         btnLogin.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        btnLogin.setMnemonic('d');
         btnLogin.setText("Đăng Nhập");
         btnLogin.setMaximumSize(new java.awt.Dimension(80, 30));
         btnLogin.setMinimumSize(new java.awt.Dimension(80, 30));

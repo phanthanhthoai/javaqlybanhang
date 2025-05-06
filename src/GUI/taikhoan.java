@@ -290,6 +290,7 @@ public class taikhoan extends javax.swing.JPanel {
         btnThemtk.setBackground(new java.awt.Color(0, 204, 51));
         btnThemtk.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnThemtk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/add.png"))); // NOI18N
+        btnThemtk.setMnemonic('t');
         btnThemtk.setText("THÊM");
         btnThemtk.setPreferredSize(new java.awt.Dimension(72, 30));
         btnThemtk.addActionListener(new java.awt.event.ActionListener() {
@@ -302,6 +303,7 @@ public class taikhoan extends javax.swing.JPanel {
         jButton2.setBackground(new java.awt.Color(255, 255, 0));
         jButton2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/edit.png"))); // NOI18N
+        jButton2.setMnemonic('s');
         jButton2.setText("SỬA");
         jButton2.setPreferredSize(new java.awt.Dimension(72, 30));
         jButton2.addActionListener(new java.awt.event.ActionListener() {

@@ -75,9 +75,13 @@ public class xemCthd extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jtbCthd = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
         btnXuatexcel = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(1125, 660));
+        setLayout(new java.awt.BorderLayout());
+
+        jScrollPane1.setBorder(null);
 
         jtbCthd.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -92,35 +96,25 @@ public class xemCthd extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jtbCthd);
 
-        btnXuatexcel.setText("Xuất Excel ");
+        add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 699, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(32, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnXuatexcel)
-                .addGap(83, 83, 83))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addComponent(btnXuatexcel)
-                .addGap(26, 26, 26))
-        );
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnXuatexcel.setBackground(new java.awt.Color(0, 204, 51));
+        btnXuatexcel.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnXuatexcel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/excel.png"))); // NOI18N
+        btnXuatexcel.setMnemonic('x');
+        btnXuatexcel.setText("Xuất Excel ");
+        jPanel1.add(btnXuatexcel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, -1));
+
+        add(jPanel1, java.awt.BorderLayout.SOUTH);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnXuatexcel;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jtbCthd;
     // End of variables declaration//GEN-END:variables

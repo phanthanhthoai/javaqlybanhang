@@ -138,9 +138,9 @@
                       <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="btnAdd" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="btnEdit" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="btnEdit" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="140" max="32767" attributes="0"/>
               </Group>
@@ -420,8 +420,8 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnSearch" min="-2" pref="127" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="btnSearch" min="-2" pref="133" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="txtSearch" pref="614" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -452,7 +452,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/image/search.png"/>
                 </Property>
-                <Property name="mnemonic" type="int" value="116"/>
+                <Property name="mnemonic" type="int" value="107"/>
                 <Property name="text" type="java.lang.String" value="T&#xec;m Ki&#x1ebf;m"/>
               </Properties>
               <Events>
