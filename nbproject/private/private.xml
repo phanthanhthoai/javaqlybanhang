@@ -3,14 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/D:/javaqlybanhang/src/BUS/SanPhamBUS.java</file>
             <file>file:/D:/javaqlybanhang/src/GUI/danhsachphieunhap.java</file>
-            <file>file:/D:/javaqlybanhang/src/GUI/thongke.java</file>
+            <file>file:/D:/javaqlybanhang/src/DTO/SanPhamDTO.java</file>
+            <file>file:/D:/javaqlybanhang/src/GUI/vaitro.java</file>
             <file>file:/D:/javaqlybanhang/src/GUI/sidebar.java</file>
             <file>file:/D:/javaqlybanhang/src/GUI/sanpham.java</file>
+            <file>file:/D:/javaqlybanhang/src/DAO/SanPhamDAO.java</file>
+            <file>file:/D:/javaqlybanhang/src/GUI/taikhoan.java</file>
+            <file>file:/D:/javaqlybanhang/src/GUI/chuyenmanhinhController.java</file>
+            <file>file:/D:/javaqlybanhang/src/GUI/thongke.java</file>
+            <file>file:/D:/javaqlybanhang/src/GUI/DanhMucBean.java</file>
             <file>file:/D:/javaqlybanhang/src/GUI/xemCthd.java</file>
             <file>file:/D:/javaqlybanhang/src/GUI/hoadon.java</file>
             <file>file:/D:/javaqlybanhang/src/GUI/Login.java</file>
-            <file>file:/D:/javaqlybanhang/src/GUI/taikhoan.java</file>
         </group>
     </open-files>
 </project-private>
