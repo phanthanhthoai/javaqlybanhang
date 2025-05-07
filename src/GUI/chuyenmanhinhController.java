@@ -15,7 +15,6 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import java.awt.geom.RoundRectangle2D;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -36,17 +35,6 @@ public class chuyenmanhinhController {
         this.root = root;
     }
 
-//    public void setView(JPanel jpnItem, JLabel jlbItem) throws SQLException, IOException {
-//        kindSelected = "trangchu";
-//        jpnItem.setBackground(new Color(96, 100, 191));
-//        jlbItem.setBackground(new Color(96, 100, 191));
-//
-//        root.removeAll();
-//        root.setLayout(new BorderLayout());
-//        root.add(new trangchu());
-//        root.validate();
-//        root.repaint();
-//    }
     public void setView(JPanel jpnItem, JLabel jlbItem) throws SQLException, IOException {
         kindSelected = "trangchu";
         setChangeBackground(kindSelected);
@@ -72,14 +60,9 @@ public class chuyenmanhinhController {
         dm.getJlb().addMouseListener(new LabelEvent(dm.getKind(), dm.getJpn(), dm.getJlb()));
     }
 
-    private JPanel createPillShapedPanel(JLabel jlb) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
     class LabelEvent implements MouseListener {
 
         private JPanel node;
-
         private String kind;
         private JPanel jpnItem;
         private JLabel jlbItem;
@@ -91,41 +74,6 @@ public class chuyenmanhinhController {
             this.kind = kind;
             this.jpnItem = jpnItem;
             this.jlbItem = jlbItem;
-        }
-
-        private JPanel createPillShapedPanel(JLabel jlb) {
-            PillShapedPanel panel = new PillShapedPanel(new Color(96, 100, 191));
-            panel.setPreferredSize(new Dimension(230, 50));
-            panel.setLayout(new BorderLayout());
-            panel.add(jlb, BorderLayout.CENTER);
-            jlb.setHorizontalAlignment(SwingConstants.CENTER);
-            panel.setOpaque(false); // Đảm bảo nền trong suốt
-
-            return panel;
-        }
-
-        public class PillShapedPanel extends JPanel {
-
-            private Color backgroundColor;
-
-            public PillShapedPanel(Color backgroundColor) {
-                this.backgroundColor = backgroundColor;
-                setOpaque(false);
-            }
-
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                Graphics2D g2 = (Graphics2D) g;
-                g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
-                int width = getWidth();
-                int height = getHeight();
-                int arcSize = height; // Để hình viên thuốc
-
-                g2.setColor(backgroundColor);
-                g2.fillRoundRect(0, 0, width, height, arcSize, arcSize);
-            }
         }
 
         @Override
@@ -156,7 +104,7 @@ public class chuyenmanhinhController {
                     node = new danhsachphieunhap();
                     break;
                 case "thongke":
-                    node = new thongke(); // Sửa lại đúng class cần hiển thị
+                    node = new thongke();
                     break;
                 case "vaitro":
                     node = new vaitro();
@@ -190,7 +138,7 @@ public class chuyenmanhinhController {
         public void mousePressed(MouseEvent e) {
             kindSelected = kind;
             jpnItem.setBackground(new Color(96, 100, 191));
-            jlbItem.setBackground(new Color(96, 100, 191));
+            jlbItem.setForeground(new Color(255, 255, 255));
         }
 
         @Override
@@ -200,14 +148,14 @@ public class chuyenmanhinhController {
         @Override
         public void mouseEntered(MouseEvent e) {
             jpnItem.setBackground(new Color(96, 100, 191));
-            jlbItem.setBackground(new Color(96, 100, 191));
+            jlbItem.setForeground(new Color(255, 255, 255));
         }
 
         @Override
         public void mouseExited(MouseEvent e) {
             if (!kindSelected.equalsIgnoreCase(kind)) {
-                jpnItem.setBackground(new Color(76, 175, 80));
-                jlbItem.setBackground(new Color(76, 175, 80));
+                jpnItem.setBackground(new Color(255, 204, 0)); // Restore original yellow color
+                jlbItem.setForeground(new Color(0, 102, 102)); // Restore original foreground color
             }
         }
     }
@@ -215,33 +163,12 @@ public class chuyenmanhinhController {
     void setChangeBackground(String kind) {
         for (DanhMucBean item : listItem) {
             if (item.getKind().equalsIgnoreCase(kind)) {
-                JPanel newPanel = createPillShapedPanel(item.getJlb());
-                item.setJpn(newPanel); // Cập nhật JPanel mới
-                newPanel.setBackground(new Color(96, 100, 191));
-                item.getJlb().setBackground(new Color(255, 255, 255)); // Chữ màu trắng
-
-                // Remove panel cũ và add lại panel mới
-                root.remove(item.getJpn());
-                root.add(newPanel);
-                root.revalidate();
-                root.repaint();
+                item.getJpn().setBackground(new Color(96, 100, 191));
+                item.getJlb().setForeground(new Color(255, 255, 255));
             } else {
-                item.getJpn().setBackground(new Color(76, 175, 80));
-                item.getJlb().setBackground(new Color(0, 0, 0));
+                item.getJpn().setBackground(new Color(255, 204, 0)); // Restore original yellow color
+                item.getJlb().setForeground(new Color(0, 102, 102)); // Restore original foreground color
             }
         }
     }
-//    void setChangeBackground(String kind) {
-//        for (DanhMucBean item : listItem) {
-//            if (item.getKind().equalsIgnoreCase(kind)) 
-//                JPanel newPanel = createPillShapedPanel(item.getJlb());
-//                item.setJpn(newPanel); // Cập nhật JPanel mới
-//                newPanel.setBackground(new Color(96, 100, 191));
-//                item.getJlb().setBackground(new Color(96, 100, 191));
-//            } else {
-//                item.getJpn().setBackground(new Color(76, 175, 80));
-//                item.getJlb().setBackground(new Color(76, 175, 80));
-//            }
-//        }
-//    }
 }
